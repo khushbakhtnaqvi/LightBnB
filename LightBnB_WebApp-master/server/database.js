@@ -146,7 +146,13 @@ exports.getAllReservations = getAllReservations;
   LIMIT $${queryParams.length};
   `;
   console.log(queryString, queryParams);
-  return pool.query(queryString, queryParams).then((res) => res.rows);
+  return pool.query(queryString, queryParams)
+  .then((res) => {
+    return res.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 };
 
 exports.getAllProperties = getAllProperties;
@@ -244,7 +250,13 @@ const addProperty = (property) => {
   // LIMIT $${queryParams.length};
   // `;
   console.log(queryString, queryParams);
-  return pool.query(queryString, queryParams).then((res) => res.rows);
+  return pool.query(queryString, queryParams)
+  .then((res) => {
+    return res.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 };
 
 // const addProperty = function(property) {
